@@ -6,7 +6,7 @@ import ConvexClerkProvider from "../providers/ConvexClerkProvider"
 const manrope = Manrope({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Ai Imager",
+  title: "AI Imager",
   description: "Generate your image with AI",
   icons: {
     icon: "/icons/logo.svg",

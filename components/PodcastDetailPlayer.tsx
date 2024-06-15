@@ -32,7 +32,7 @@ const PodcastDetailPlayer = ({
     try {
       await deletePodcast({ podcastId, imageStorageId });
       toast({
-        title: "Podcast deleted",
+        title: "Post deleted",
       });
       router.push("/");
     } catch (error) {
