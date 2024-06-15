@@ -20,7 +20,7 @@ const PodcastDetails = ({
 
   const podcast = useQuery(api.podcasts.getPodcastById, { podcastId })
 
-  console.log('podcast', podcast)
+  console.log("podcast", podcast)
 
   const similarPodcasts = useQuery(api.podcasts.getPodcastByVoiceType, {
     podcastId,
@@ -32,7 +32,6 @@ const PodcastDetails = ({
 
   return (
     <section className="flex w-full flex-col mt-10">
-
       <PodcastDetailPlayer
         isOwner={isOwner}
         podcastId={podcast._id}
@@ -40,7 +39,6 @@ const PodcastDetails = ({
       />
 
       <div className="flex flex-col gap-8">
-        
         <div className="flex flex-col gap-4 mt-4">
           <h1 className="text-18 font-bold text-white-1">Prompt</h1>
           <p className="text-16 font-medium text-white-2 max-w-[455px]">
@@ -53,8 +51,10 @@ const PodcastDetails = ({
 
         {similarPodcasts && similarPodcasts.length > 0 ? (
           <div className="podcast_grid">
-            {similarPodcasts?.map(
-              ({ _id, podcastTitle, podcastDescription, imageUrl }) => (
+            {similarPodcasts
+              ?.slice() // Creates a shallow copy of the array
+              .reverse() // Reverses the order of the copied array
+              .map(({ _id, podcastTitle, podcastDescription, imageUrl }) => (
                 <PodcastCard
                   key={_id}
                   imgUrl={imageUrl as string}
@@ -62,8 +62,7 @@ const PodcastDetails = ({
                   description={podcastDescription}
                   podcastId={_id}
                 />
-              )
-            )}
+              ))}
           </div>
         ) : (
           <>
