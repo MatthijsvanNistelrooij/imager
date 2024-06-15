@@ -1,15 +1,15 @@
-"use client";
-import { useMutation } from "convex/react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+"use client"
+import { useMutation } from "convex/react"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 
-import { api } from "@/convex/_generated/api";
-import { PodcastDetailPlayerProps } from "@/types";
+import { api } from "@/convex/_generated/api"
+import { PodcastDetailPlayerProps } from "@/types"
 
-import LoaderSpinner from "./LoaderSpinner";
-import { Button } from "./ui/button";
-import { useToast } from "./ui/use-toast";
+import LoaderSpinner from "./LoaderSpinner"
+import { Button } from "./ui/button"
+import { useToast } from "./ui/use-toast"
 
 const PodcastDetailPlayer = ({
   audioUrl,
@@ -23,39 +23,40 @@ const PodcastDetailPlayer = ({
   authorImageUrl,
   authorId,
 }: PodcastDetailPlayerProps) => {
-  const router = useRouter();
-  const { toast } = useToast();
-  const [isDeleting, setIsDeleting] = useState(false);
-  const deletePodcast = useMutation(api.podcasts.deletePodcast);
+  const router = useRouter()
+  const { toast } = useToast()
+  const [isDeleting, setIsDeleting] = useState(false)
+  const deletePodcast = useMutation(api.podcasts.deletePodcast)
+  const [isLarge, setIsLarge] = useState(false)
 
   const handleDelete = async () => {
     try {
-      await deletePodcast({ podcastId, imageStorageId });
+      await deletePodcast({ podcastId, imageStorageId })
       toast({
         title: "Post deleted",
-      });
-      router.push("/");
+      })
+      router.push("/")
     } catch (error) {
-      console.error("Error deleting podcast", error);
+      console.error("Error deleting podcast", error)
       toast({
         title: "Error deleting podcast",
         variant: "destructive",
-      });
+      })
     }
-  };
+  }
 
-
-  if (!imageUrl || !authorImageUrl) return <LoaderSpinner />;
+  if (!imageUrl || !authorImageUrl) return <LoaderSpinner />
 
   return (
     <div className="mt-6 flex w-full justify-between max-md:justify-center">
       <div className="flex flex-col gap-8 max-md:items-center md:flex-row">
         <Image
           src={imageUrl}
-          width={450}
+          width={isLarge ? 700 : 450}
           height={450}
           alt="Podcast image"
-          className="aspect-square rounded-lg"
+          className="aspect-square rounded-lg hover:cursor-pointer"
+          onClick={() => setIsLarge(!isLarge)}
         />
         <div className="flex w-full flex-col gap-5 max-md:items-center md:gap-9">
           <article className="flex flex-col gap-2 max-md:items-center">
@@ -65,7 +66,7 @@ const PodcastDetailPlayer = ({
             <figure
               className="flex cursor-pointer items-center gap-2"
               onClick={() => {
-                router.push(`/profile/${authorId}`);
+                router.push(`/profile/${authorId}`)
               }}
             >
               <Image
@@ -78,8 +79,6 @@ const PodcastDetailPlayer = ({
               <h2 className="text-16 font-normal text-white-3">{author}</h2>
             </figure>
           </article>
-
-
         </div>
       </div>
       {isOwner && (
@@ -109,7 +108,7 @@ const PodcastDetailPlayer = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PodcastDetailPlayer;
+export default PodcastDetailPlayer
