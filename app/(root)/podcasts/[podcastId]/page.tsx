@@ -20,8 +20,6 @@ const PodcastDetails = ({
 
   const podcast = useQuery(api.podcasts.getPodcastById, { podcastId })
 
-  console.log("podcast", podcast)
-
   const similarPodcasts = useQuery(api.podcasts.getPodcastByVoiceType, {
     podcastId,
   })

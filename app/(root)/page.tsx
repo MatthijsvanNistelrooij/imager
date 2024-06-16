@@ -11,8 +11,6 @@ const Home = () => {
 
   const reversedPodcasts = trendingPodcasts.slice().reverse();
 
-  console.log("trendingPodcasts", trendingPodcasts)
-
   return (
     <div className="mt-9 flex flex-col gap-9 md:overflow-hidden">
       <section className="flex flex-col gap-5">
