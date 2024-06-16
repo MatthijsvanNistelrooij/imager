@@ -32,14 +32,13 @@ const PodcastDetails = ({
 
   return (
     <section className="flex w-full flex-col mt-10">
-      <PodcastDetailPlayer
-        isOwner={isOwner}
-        podcastId={podcast._id}
-        {...podcast}
-      />
-
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4 mt-4">
+          <PodcastDetailPlayer
+            isOwner={isOwner}
+            podcastId={podcast._id}
+            {...podcast}
+          />
           <h1 className="text-18 font-bold text-white-1">Prompt</h1>
           <p className="text-16 font-medium text-white-2 max-w-[455px]">
             {podcast?.imagePrompt}

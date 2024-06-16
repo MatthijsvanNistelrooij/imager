@@ -60,9 +60,6 @@ const PodcastDetailPlayer = ({
         />
         <div className="flex w-full flex-col gap-5 max-md:items-center md:gap-9">
           <article className="flex flex-col gap-2 max-md:items-center">
-            <h1 className="text-32 font-extrabold tracking-[-0.32px] text-white-1">
-              {podcastTitle}
-            </h1>
             <figure
               className="flex cursor-pointer items-center gap-2"
               onClick={() => {

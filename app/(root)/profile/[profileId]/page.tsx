@@ -23,8 +23,6 @@ const ProfilePage = ({
 
   if (!user || !podcastsData) return <LoaderSpinner />
 
-  console.log("podcastsData", podcastsData)
-
   return (
     <section className="mt-9 flex flex-col">
       <h1 className="text-20 font-bold text-white-1 max-md:text-center">
