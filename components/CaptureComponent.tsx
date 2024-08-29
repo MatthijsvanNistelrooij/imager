@@ -27,7 +27,7 @@ const CaptureComponent: React.FC = () => {
 
   const captureTitle = prompt
   const authHeaders = {
-    Authorization: `luma-api-key=9ce3f8f0-15f5-472b-a608-9789fb3b6005-cdca287-06b5-47e6-8230-342e0c98327a`,
+    Authorization: process.env.LUMA_API_KEY,
   }
 
   const fetchData = async () => {
