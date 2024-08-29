@@ -41,6 +41,14 @@ const LeftSidebar = () => {
         >
           <p>Create</p>
         </Link>
+        {/* <Link
+          href={"/luma-capture"}
+          className={cn(
+            "flex gap-1 items-center max-lg:px-1 justify-start lg:justify-start bg-black-2 p-4 pl-6 hover:bg-black-3"
+          )}
+        >
+          <p>Capture</p>
+        </Link> */}
       </nav>
       <SignedOut>
         <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8 pl-8">
